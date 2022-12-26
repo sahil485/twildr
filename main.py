@@ -13,8 +13,8 @@ os.chdir(download_dir)
 nltk.data.path.append(download_dir)
 
 
-APP_KEY = "P07duQ7g378BP3TosSMzEnhVi"
-ACCESS_TOKEN = "AAAAAAAAAAAAAAAAAAAAANSvkQEAAAAAyjbNKIiVtL9igt1g6HAKbQyFqTo%3DXk72oMpiARgeiWzJRjmvlQvKhnqU1nBrE39SVT3fXUoLxMQ2hD"
+APP_KEY = "<key>"
+ACCESS_TOKEN = "<token>"
 
 twitter = Twython(APP_KEY, access_token = ACCESS_TOKEN)
 
