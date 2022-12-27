@@ -1,8 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from twython import Twython
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 from dotenv import load_dotenv
+
 import requests
 import numpy as np
 import os
@@ -14,6 +15,7 @@ os.chdir(download_dir)
 nltk.data.path.append(download_dir)
 load_dotenv()
 
+
 APP_KEY = os.getenv('APP_KEY')
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 
@@ -21,16 +23,17 @@ twitter = Twython(APP_KEY, access_token=ACCESS_TOKEN)
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def welcome():
     return "<h1>ENDPOINTS </h1>" \
-           "<p> <b>/coords?city={city_name}&countrsy={country_name}</b> - finds lat and long of specified country</p>" \
-           "<p> <b>/trends?lat={lattitude}&long={longitude}</b> - returns trends of a place given latitude and longitude</p>" \
+           "<p> <b>/coords?city={city_name}&country={country_name}</b> - finds lat and long of specified country</p>" \
+           "<p> <b>/trends?lat={latitude}&long={longitude}</b> - returns trends of a place given latitude and longitude</p>" \
            "<p> <b>/articles?tag={tag}</b> - returns the top 3 linked articles/media from Google News given a certain tag </p>" \
-            "<p> <b>/summarize?url={article_url}</b> returns 5-sentence summary of the top article returned by the /articles endpoint </p>"
-               # "<p> <b>/woeid?lat={lattitude}&long={longitude}</b> - returns the WOEID of a place given the latitude and longitude</p>" \
+           "<p> <b>/ip</b> - returns the IP of the user </p>"
 
+@app.route("/ip", methods=["GET"])
+def get_my_ip():
+    return requests.get('https://api.ipify.org').content.decode('utf8')
 
 @app.route('/coords', methods = ["GET"])
 def get_coords():
@@ -68,25 +71,6 @@ def get_woeid():
     return {'place': place, 'active_tweets': active_tweets}
 
 
-# # trends?place=San%20Francisco&woeid=2487956 - test w/ san franscisco
-# @app.route('/trends', methods = ["GET"])
-# def trends():
-#     args = request.args
-#     place = args.get('place')
-#     woeid = args.get('woeid')
-#
-#     if not woeid:
-#         return "Please enter a WOEID location identifier"
-#
-#     res = twitter.get_place_trends(id = woeid)
-#     trend_dict = res[0]['trends']
-#
-#     active_tweets = [{'name' : trend['name'], 'url' : trend['url'], 'query' : trend['query'], 'volume' : trend['tweet_volume']}
-#                      for trend in trend_dict if trend['tweet_volume'] is not None]
-#
-#     return {'place' : place, 'active_tweets' : active_tweets}
-
-
 @app.route('/articles', methods = ["GET"])
 def articles():
     args = request.args
@@ -100,36 +84,31 @@ def articles():
     top_three = [entry.find('h3', class_='ipQwMb ekueJc RD0gLb') for entry in top_three]
     links = [[article.find('a').get_text(), article.find('a').get('href')] for article in top_three]
 
-    # print(len(links))
-
     links = [[links[ind][0], f'http://news.google.com{links[ind][1][1:]}'] for ind in range(len(links))]
+    # N x 2 array, where first entry is the name of the article, second is the link
 
-    return [{'name': links[i-1][0] , f"link {i}" : links[i-1][1]} for i in range(1, len(links) + 1)]
+    all_text = ""
+    ind = -1
 
+    for i in range(3):
+        ind = i
+        try:
+            article = requests.get(links[ind][1])
+            soup = BeautifulSoup(article.text.strip(), 'html.parser')
 
-@app.route('/summarize', methods = ['GET'])
-def get_text():
-    args = request.args
-    url = args.get('url')
+            article_tags = soup.body.find_all('article')
 
-    try:
-        article = requests.get(url)
-        soup = BeautifulSoup(article.text, 'html.parser')
+            text = article_tags[0].find_all('p')
 
-        article_tags = soup.body.find_all('article')
+            for words in text:
+                all_text += words.get_text()
 
-        text = article_tags[0].find_all('p')
+        except Exception as e:
+            continue
 
-        all_text = ""
-        for words in text:
-            all_text += words.get_text()
+    first_summary = summarize(all_text, 3)
 
-        return summarize(all_text, 3)
-
-    except Exception as e:
-        return f"<p> {e} </p>" \
-               f"Sorry, try again later"
-
+    return [{'summary': first_summary, 'name' : links[ind][0], f"link" : links[ind][1]}, [{'name': links[i-1][0] , f"link" : links[i-1][1]} for i in range(len(links)) if i != ind]]
 
 def compute_word_frequencies(tokenized_sentences):
     word_freqs = dict()
