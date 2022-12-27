@@ -1,8 +1,9 @@
 from flask import Flask, request
 from twython import Twython
-import requests
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
+from dotenv import load_dotenv
+import requests
 import numpy as np
 import os
 import nltk
@@ -11,14 +12,15 @@ root = os.path.dirname(os.path.abspath(__file__))
 download_dir = os.path.join(root, 'nltk_data')
 os.chdir(download_dir)
 nltk.data.path.append(download_dir)
+load_dotenv()
 
-
-APP_KEY = '<key>>'
-ACCESS_TOKEN = '<access-token>'
+APP_KEY = os.getenv('APP_KEY')
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 
 twitter = Twython(APP_KEY, access_token=ACCESS_TOKEN)
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def welcome():
@@ -40,6 +42,7 @@ def get_coords():
     location = geolocator.geocode(f"{city}, {country}")
 
     return {'latitude' : location.latitude, 'longitude' : location.longitude}
+
 
 # woeid?lat=37.781157&long=-122.400612831116 - test w/ san francisco
 @app.route('/trends', methods = ["GET"])
@@ -127,6 +130,7 @@ def get_text():
         return f"<p> {e} </p>" \
                f"Sorry, try again later"
 
+
 def compute_word_frequencies(tokenized_sentences):
     word_freqs = dict()
     for sentence in tokenized_sentences:
@@ -140,11 +144,14 @@ def compute_word_frequencies(tokenized_sentences):
 
 def summarize(article, num_sentences):
     # Split the article into sentences
-    sentences = nltk.sent_tokenize(article)
-    num_sentences = min(num_sentences, len(sentences))
+    # sentences = nltk.sent_tokenize(article.strip())
+    sentences = article.strip().split(".")
+    # num_sentences = min(num_sentences, len(sentences))
+
+    print(len(sentences))
 
     # Tokenize each sentence into words
-    tokenized_sentences = [nltk.word_tokenize(s) for s in sentences]
+    tokenized_sentences = [nltk.word_tokenize(sentence) for sentence in sentences]
 
     # print(tokenized_sentences)
 
@@ -164,7 +171,7 @@ def summarize(article, num_sentences):
     summary_sentences = []
     for i in range(num_sentences):
         max_index = np.asarray(sentence_importances).argmax()
-        summary_sentences.append(sentences[max_index])
+        summary_sentences.append(f"{sentences[max_index]}.")
         sentence_importances[max_index] = -1
     # # Concatenate the selected sentences to form the summary
     summary = " ".join(summary_sentences)
