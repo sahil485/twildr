@@ -13,21 +13,21 @@ os.chdir(download_dir)
 nltk.data.path.append(download_dir)
 
 
-APP_KEY = "<key>"
-ACCESS_TOKEN = "<token>"
+APP_KEY = '<key>>'
+ACCESS_TOKEN = '<access-token>'
 
-twitter = Twython(APP_KEY, access_token = ACCESS_TOKEN)
+twitter = Twython(APP_KEY, access_token=ACCESS_TOKEN)
 
 app = Flask(__name__)
 
 @app.route("/")
 def welcome():
     return "<h1>ENDPOINTS </h1>" \
-           "<p> <b>/coords?city={city_name}&country={country_name}</b> - finds lat and long of specified country</p>" \
-           "<p> <b>/woeid?lat={lattitude}&long={longitude}</b> - returns the WOEID of a place given the latitude and longitude</p>" \
-           "<p> <b>/trends?place={place_name}&woeid={woeid}</b> - returns the top 50 trends for a place given the WOEID</p>" \
+           "<p> <b>/coords?city={city_name}&countrsy={country_name}</b> - finds lat and long of specified country</p>" \
+           "<p> <b>/trends?lat={lattitude}&long={longitude}</b> - returns trends of a place given latitude and longitude</p>" \
            "<p> <b>/articles?tag={tag}</b> - returns the top 3 linked articles/media from Google News given a certain tag </p>" \
             "<p> <b>/summarize?url={article_url}</b> returns 5-sentence summary of the top article returned by the /articles endpoint </p>"
+               # "<p> <b>/woeid?lat={lattitude}&long={longitude}</b> - returns the WOEID of a place given the latitude and longitude</p>" \
 
 
 @app.route('/coords', methods = ["GET"])
@@ -42,7 +42,7 @@ def get_coords():
     return {'latitude' : location.latitude, 'longitude' : location.longitude}
 
 # woeid?lat=37.781157&long=-122.400612831116 - test w/ san francisco
-@app.route('/woeid', methods = ["GET"])
+@app.route('/trends', methods = ["GET"])
 def get_woeid():
     # get the city name from the query string
     args = request.args
@@ -53,27 +53,35 @@ def get_woeid():
 
     res = twitter.get_closest_trends(lat = lat, long = long)
     place = res[0]['name']
-    city_woeid = res[0]['woeid']
-    return {'place' : place, 'woeid' : city_woeid}
+    woeid = res[0]['woeid']
 
-
-# trends?place=San%20Francisco&woeid=2487956 - test w/ san franscisco
-@app.route('/trends', methods = ["GET"])
-def trends():
-    args = request.args
-    place = args.get('place')
-    woeid = args.get('woeid')
-
-    if not woeid:
-        return "Please enter a WOEID location identifier"
-
-    res = twitter.get_place_trends(id = woeid)
+    res = twitter.get_place_trends(id=woeid)
     trend_dict = res[0]['trends']
 
-    active_tweets = [{'name' : trend['name'], 'url' : trend['url'], 'query' : trend['query'], 'volume' : trend['tweet_volume']}
-                     for trend in trend_dict if trend['tweet_volume'] is not None]
+    active_tweets = [
+        {'name': trend['name'], 'url': trend['url'], 'query': trend['query'], 'volume': trend['tweet_volume']}
+        for trend in trend_dict if trend['tweet_volume'] is not None]
 
-    return {'place' : place, 'active_tweets' : active_tweets}
+    return {'place': place, 'active_tweets': active_tweets}
+
+
+# # trends?place=San%20Francisco&woeid=2487956 - test w/ san franscisco
+# @app.route('/trends', methods = ["GET"])
+# def trends():
+#     args = request.args
+#     place = args.get('place')
+#     woeid = args.get('woeid')
+#
+#     if not woeid:
+#         return "Please enter a WOEID location identifier"
+#
+#     res = twitter.get_place_trends(id = woeid)
+#     trend_dict = res[0]['trends']
+#
+#     active_tweets = [{'name' : trend['name'], 'url' : trend['url'], 'query' : trend['query'], 'volume' : trend['tweet_volume']}
+#                      for trend in trend_dict if trend['tweet_volume'] is not None]
+#
+#     return {'place' : place, 'active_tweets' : active_tweets}
 
 
 @app.route('/articles', methods = ["GET"])
