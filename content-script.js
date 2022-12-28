@@ -1,3 +1,9 @@
+// Whats left
+
+// Close TLDR
+// Improve formatting
+// loading
+
 console.log('content script loaded')
 let url = location.href; 
 
@@ -60,7 +66,7 @@ function displayTLDR(trendName, summary, link) {
     var div = document.createElement("div");
     div.style = "margin: 20px;"
     div.id = "twitter trend tldr"
-    div.innerHTML = '<div dir="ltr" class="css-901oao css-cens5h r-jwli3a r-37j5jr r-1blvdjr r-1vr29t4 r-vrz42v r-hrzydr r-bcqeeo r-qvutc0" style="-webkit-line-clamp: 3;"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">Twitter Trend TLDR: '+trendName+'</span></div>';
+    div.innerHTML = '<div dir="ltr" class="css-901oao css-cens5h r-jwli3a r-37j5jr r-1blvdjr r-1vr29t4 r-vrz42v r-hrzydr r-bcqeeo r-qvutc0" style="-webkit-line-clamp: 3;"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0" style="font-size:20px">Twitter Trend TLDR: '+trendName+'</span></div>';
     div.innerHTML += '<div dir="auto" lang="en" class="css-901oao r-1nao33i r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-bnwqim r-qvutc0" id="id__6y8ek7v84uf" data-testid="tweetText"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">'+summary+'</span></div>';
     document.getElementsByTagName("main")[0].prepend(div);
   });

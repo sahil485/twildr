@@ -13,5 +13,8 @@
     "webNavigation",
     "storage"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "host_permissions": ["https://*/"]
 }
