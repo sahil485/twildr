@@ -1,4 +1,5 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
+from flask_cors import CORS, cross_origin
 from twython import Twython
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
@@ -22,6 +23,9 @@ ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 twitter = Twython(APP_KEY, access_token=ACCESS_TOKEN)
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 
 @app.route("/")
 def welcome():
@@ -31,9 +35,11 @@ def welcome():
            "<p> <b>/articles?tag={tag}</b> - returns the top 3 linked articles/media from Google News given a certain tag </p>" \
            "<p> <b>/ip</b> - returns the IP of the user </p>"
 
+
 @app.route("/ip", methods=["GET"])
 def get_my_ip():
     return requests.get('https://api.ipify.org').content.decode('utf8')
+
 
 @app.route('/coords', methods = ["GET"])
 def get_coords():
@@ -64,27 +70,35 @@ def get_woeid():
     res = twitter.get_place_trends(id=woeid)
     trend_dict = res[0]['trends']
 
+    # active_tweets = [
+    #     {'name': trend['name'], 'url': trend['url'], 'query': trend['query'], 'volume': trend['tweet_volume']}
+    #     for trend in trend_dict if trend['tweet_volume'] is not None]
     active_tweets = [
         {'name': trend['name'], 'url': trend['url'], 'query': trend['query'], 'volume': trend['tweet_volume']}
-        for trend in trend_dict if trend['tweet_volume'] is not None]
+        for trend in trend_dict]
 
     return {'place': place, 'active_tweets': active_tweets}
 
 
 @app.route('/articles', methods = ["GET"])
-def articles():
+def get_articles():
     args = request.args
     tag = args.get('tag')
 
-    res = requests.get(f'http://www.news.google.com/search?q={tag}')
-    soup = BeautifulSoup(res.text, 'html.parser')
+    resp = requests.get(f'http://www.news.google.com/rss/search?q={tag}')
 
-    results = soup.find_all("div", class_='NiLAwe y6IFtc R7GTQ keNKEd j7vNaf nID9nc')
-    top_three = results[0:3]
-    top_three = [entry.find('h3', class_='ipQwMb ekueJc RD0gLb') for entry in top_three]
-    links = [[article.find('a').get_text(), article.find('a').get('href')] for article in top_three]
+    soup = BeautifulSoup(resp.content, features='xml')
 
-    links = [[links[ind][0], f'http://news.google.com{links[ind][1][1:]}'] for ind in range(len(links))]
+    items = soup.find_all('item')
+
+    items = items[0:3]
+
+    articles = []
+
+    for item in items:
+        title = item.find('title').get_text()
+        link = item.find('link').get_text()
+        articles.append([title, link])
     # N x 2 array, where first entry is the name of the article, second is the link
 
     all_text = ""
@@ -93,7 +107,7 @@ def articles():
     for i in range(3):
         ind = i
         try:
-            article = requests.get(links[ind][1])
+            article = requests.get(articles[ind][1])
             soup = BeautifulSoup(article.text.strip(), 'html.parser')
 
             article_tags = soup.body.find_all('article')
@@ -108,7 +122,8 @@ def articles():
 
     first_summary = summarize(all_text, 3)
 
-    return [{'summary': first_summary, 'name' : links[ind][0], f"link" : links[ind][1]}, [{'name': links[i-1][0] , f"link" : links[i-1][1]} for i in range(len(links)) if i != ind]]
+    return [{'summary': first_summary, 'name' : articles[ind][0], f"link" : articles[ind][1]}, [{'name': articles[i][0] , f"link" : articles[i][1]} for i in range(len(articles)) if i != ind]]
+
 
 def compute_word_frequencies(tokenized_sentences):
     word_freqs = dict()
