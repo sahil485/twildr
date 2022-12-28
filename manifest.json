@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Trend TLDR",
+  "version": "1.0.0",
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [
+    "webNavigation",
+    "storage"
+  ],
+  "host_permissions": ["https://*/"]
+}
