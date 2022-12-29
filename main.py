@@ -96,10 +96,13 @@ def get_articles():
     articles = []
 
     for item in items:
-        title = item.find('title').get_text()
+        headline = item.find('title').get_text()
         link = item.find('link').get_text()
-        articles.append([title, link])
-    # N x 2 array, where first entry is the name of the article, second is the link
+        title = headline.split("-")[0]
+        source = headline.split("-")[-1]
+        print(title)
+        articles.append([title, link, source])
+    # N x 3 array, where first entry is the name of the article, second is the link, third is the creator
 
     all_text = ""
     ind = -1
@@ -122,7 +125,7 @@ def get_articles():
 
     first_summary = summarize(all_text, 3)
 
-    return [{'summary': first_summary, 'name' : articles[ind][0], f"link" : articles[ind][1]}, [{'name': articles[i][0] , f"link" : articles[i][1]} for i in range(len(articles)) if i != ind]]
+    return [{'summary': first_summary, 'name' : articles[ind][0], 'source' : articles[ind][2], f"link" : articles[ind][1]}, [{'name': articles[i][0] , 'source' : articles[i][2], f"link" : articles[i][1]} for i in range(len(articles)) if i != ind]]
 
 
 def compute_word_frequencies(tokenized_sentences):
