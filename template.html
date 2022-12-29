@@ -1,57 +1,4 @@
-// Whats left
-
-// Close TLDR
-// Improve formatting
-// loading
-
-console.log('content script loaded')
-let url = location.href; 
-
-
-// When an element is clicked, this function will be executed
-document.addEventListener("click", async function(event) {
-    const div = event.path.filter(path => path.className == "css-1dbjc4n r-1adg3ll r-1ny4l3l")
-    // check if trend is clicked
-    if (div.length > 0) {
-      let trendName = div[0].children[0].children[0].children[0].children[1].innerText
-      trendName = trendName.replace("#", "")
-
-      console.log(trendName)
-
-      await fetch(`https://twitter-flask-372723.ue.r.appspot.com/articles?tag=${trendName}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        displayTLDR(trendName, data[0].summary, data[0].link);
-      }).catch((err) => {
-        console.log(err)
-      });
-    }
-
-    
-});
-
-function getSummary(trendName) {
-  fetch(`https://twitter-flask-372723.ue.r.appspot.com/articles?tag=${trendName}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    }).catch((err) => {
-      console.log(err)
-    });
-}
-
-function displayTLDR(trendName, summary, link) {
-  chrome.storage.session.set({ displayedTrend: trendName }).then(() => {
-    console.log("Value is set to " + trendName);
-
-    // create a div and add it to the page
-    var div = document.createElement("div");
-    div.id = "twitter trend tldr"
-    div.style = "position: relative; width: 100%; transition: opacity 0.3s ease-out 0s;"
-
-    div.innerHTML = `
-    <div class="css-1dbjc4n r-1igl3o0 r-qklmqi r-1adg3ll r-1ny4l3l">
+<div class="css-1dbjc4n r-1igl3o0 r-qklmqi r-1adg3ll r-1ny4l3l">
 	<div class="css-1dbjc4n">
 		<div class="css-1dbjc4n">
 			<article aria-labelledby="id__if2772f7jhf id__uukss43jqwf id__djyr3k7l4vl id__3l9gr9ydh3n id__70yn8ck23rt id__ggg5n7v2e7j id__8qxglqrztmg id__v7ttdz78ylf id__80hxzl0fk5n id__iqzem58zp5 id__joz34qhhb7 id__b59tw0te9bk id__kh2cr2373k id__0g4uni1v84c id__sh5ofnjsxx id__c7umvsnh487 id__7bf6w9qkl id__5z0rvpuaeet id__gyg1htlrmcw" role="article" tabindex="0" class="css-1dbjc4n r-1loqt21 r-18u37iz r-1ny4l3l r-1udh08x r-1qhn6m8 r-i023vh r-o7ynqc r-6416eg" data-testid="tweet">
@@ -173,8 +120,8 @@ function displayTLDR(trendName, summary, link) {
 										<div class="css-1dbjc4n">
 											<div dir="auto" lang="en" class="css-901oao r-1nao33i r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-bnwqim r-qvutc0" id="id__joz34qhhb7" data-testid="tweetText">
 												<span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
-                            ${summary} - <a href=${link} class="css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0" target="_blank" rel="noreferrer">Source</a>
-                        </span>
+                                                    ${summary} - <a href=${link} class="css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0" target="_blank" rel="noreferrer">Source</a>
+                                                </span>
 											</div>
 										</div>
 									</div>
@@ -187,24 +134,3 @@ function displayTLDR(trendName, summary, link) {
 		</div>
 	</div>
 </div>
-    `
-    // div.innerHTML += '<div dir="auto" lang="en" class="css-901oao r-1nao33i r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-bnwqim r-qvutc0" id="id__6y8ek7v84uf" data-testid="tweetText"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">'+summary+'</span></div>';
-    document.querySelector('[data-testid="cellInnerDiv"]').parentElement.prepend(div)
-  });
-}
-
-function removeTLDR() {
-  var div = document.getElementById("twitter trend tldr");
-  if (div != null){
-    div.remove();
-  }
-}
-
-
-  // chrome.storage.session.set({ key: value }).then(() => {
-  //   console.log("Value is set to " + value);
-  // });
-  
-  // chrome.storage.session.get(["key"]).then((result) => {
-  //   console.log("Value currently is " + result.key);
-  // });
