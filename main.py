@@ -4,6 +4,8 @@ from twython import Twython
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 from dotenv import load_dotenv
+import urllib
+import json
 
 import requests
 import numpy as np
@@ -84,7 +86,7 @@ def get_woeid():
 def get_articles():
     args = request.args
     tag = args.get('tag')
-
+    tag = urllib.parse.quote(tag)
     resp = requests.get(f'http://www.news.google.com/rss/search?q={tag}')
 
     soup = BeautifulSoup(resp.content, features='xml')
@@ -100,7 +102,6 @@ def get_articles():
         link = item.find('link').get_text()
         title = headline.split("-")[0]
         source = headline.split("-")[-1]
-        print(title)
         articles.append([title, link, source])
     # N x 3 array, where first entry is the name of the article, second is the link, third is the creator
 
