@@ -14,7 +14,7 @@ document.addEventListener("click", async function(event) {
     // check if trend is clicked
     if (div.length > 0) {
       let trendName = div[0].children[0].children[0].children[0].children[1].innerText
-      trendName = trendName.replace("#", "")
+      trendName = trendName.replace("#", "%23")
 
       console.log(trendName)
 
