@@ -2,25 +2,25 @@ console.log('content script loaded')
 
 // Listen for click on the trend element 
 document.addEventListener("click", function(event) {
-    const div = event.path.filter(path => path.className == "css-1dbjc4n r-1adg3ll r-1ny4l3l")
-    if (div.length > 0) {
-      let trendName = div[0].children[0].children[0].children[0].children[1].innerText
-      trendName = trendName.replace("#", "")
-      console.log(trendName)
+	const div = event.path.filter(path => path.className == "css-1dbjc4n r-1adg3ll r-1ny4l3l")
+	if (div.length > 0) {
+		let trendName = div[0].children[0].children[0].children[0].children[1].innerText
+		trendName = trendName.replace("#", "")
+		console.log(trendName)
 
-      fetch(`https://twitter-flask-372723.ue.r.appspot.com/articles?tag=${trendName}`)
-      .then((response) => response.json())
-      .then((data) => {
-				console.log(data);
-				if (data[0].summary != "") {
-					displayTLDR(data[0].summary, data[0].source, data[0].source_link, data[1].google_news_link);
-				} else {
-					displayError(trendName, data[1].google_news_link);
-				}
-      }).catch((err) => {
-        console.log(err)
-      });
-    }
+		fetch(`https://twitter-flask-372723.ue.r.appspot.com/articles?tag=${trendName}`)
+		.then((response) => response.json())
+		.then((data) => {
+			console.log(data);
+			if (data[0].summary != "") {
+				displayTLDR(data[0].summary, data[0].source, data[0].source_link, data[1].google_news_link);
+			} else {
+				displayError(trendName, data[1].google_news_link);
+			}
+		}).catch((err) => {
+			console.log(err)
+		});
+	}
 });
 
 function displayTLDR(summary, source, source_link, google_link) {
