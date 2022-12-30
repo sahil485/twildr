@@ -18,6 +18,5 @@ __pycache__/
 # Ignored by the build system
 /setup.cfg
 
-test.py
 gen_access.py
 todo.txt

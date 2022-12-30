@@ -1,5 +1,0 @@
-import requests
-from bs4 import BeautifulSoup
-
-string = "\u201cGreta must work on her Anger Management problem, then go to a good old-fashioned movie with a friend! Chill Greta, Chill!\u201dThunberg\u2019s response was to update her Twitter biography by taking notes from the former president\u2019s post writing \u201ca teenager working on her anger management problem. In the latest such incident, controversial media personality Andrew Tate, who is known for his misogynistic and far-right comments, took to Twitter to seemingly needle Greta Thunberg, tagging her in a tweet which boasted about his collection of \"33 cars\" and their \"enormous emissions\". co/V8geeVvEvgTate's four syllable reply to Thunberg's retort fell short of expectations, with the former kickboxer simply writing \"How dare you?!\"Meanwhile, Twitter users swarmed the reply section to Thunberg's tweet affirming their support for her and deriding Tate"
-print(string.encode('utf-8'))
