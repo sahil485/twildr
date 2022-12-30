@@ -107,7 +107,7 @@ def get_articles():
             for el in text_elements:
                 all_text += f"{el}. " if len(el.split(" ")) > 2 else ""
 
-        summary = summarize(articles[ind][0],all_text)
+        summary = summarize(articles[ind][0],all_text, 5)
 
         summary = " ".join(summary)
 
