@@ -105,7 +105,7 @@ def get_articles():
 
             text_elements = [t for t in soup.find_all(text=True) if t.parent.name in allowlist]
             for el in text_elements:
-                all_text += f"{el}. " if len(el.split(" ")) > 2 else ""
+                all_text += f"{el.get_text()}. " if len(el.split(" ")) > 2 else ""
 
         summary = summarize(articles[ind][0],all_text, 3)
 
