@@ -1,9 +1,10 @@
 console.log('content script loaded')
 
+
 // Listen for click on the trend element 
 document.addEventListener("click", function(event) {
 	const div = event.composedPath().filter(path => path.className == "css-1dbjc4n r-1adg3ll r-1ny4l3l")
-	if (div.length > 0) {
+	if (div.length > 0 && window.location.href.includes("twitter.com/search")) {
 		let trendName = div[0].children[0].children[0].children[0].children[1].innerText
 		trendName = trendName.replace("#", "")
 		console.log(trendName)
