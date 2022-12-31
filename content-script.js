@@ -43,7 +43,7 @@ document.addEventListener("click", function(event) {
 function displayTLDR(summary, source, source_link, google_link) {
 	// create a div and add it to the page
 	var div = document.createElement("div");
-	div.id = "twitter trend tldr"
+	div.id = "twildr"
 	div.style = "position: relative; width: 100%; transition: opacity 0.3s ease-out 0s;"
 
 	div.innerHTML = 
@@ -72,7 +72,7 @@ function displayTLDR(summary, source, source_link, google_link) {
 															<div class="r-1adg3ll r-13qz1uu" style="padding-bottom: 100%;"></div>
 															<div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
 																<div class="css-1dbjc4n r-sdzlij r-ggadg3 r-1udh08x r-u8s1d r-8jfcpp" style="height: calc(100% - -4px); width: calc(100% - -4px);">
-																	<a href="/twittertrendtldr" aria-hidden="true" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1niwhzg r-1loqt21 r-1pi2tsx r-1ny4l3l r-o7ynqc r-6416eg r-13qz1uu">
+																	<a href="/twildr_" aria-hidden="true" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1niwhzg r-1loqt21 r-1pi2tsx r-1ny4l3l r-o7ynqc r-6416eg r-13qz1uu">
 																		<div class="css-1dbjc4n r-sdzlij r-1wyvozj r-1udh08x r-633pao r-u8s1d r-1v2oles r-desppf" style="height: calc(100% - 4px); width: calc(100% - 4px);">
 																			<div class="css-1dbjc4n r-1niwhzg r-1pi2tsx r-13qz1uu"></div>
 																		</div>
@@ -112,10 +112,10 @@ function displayTLDR(summary, source, source_link, google_link) {
 														<div class="css-1dbjc4n r-1awozwy r-18u37iz r-1wbh5a2 r-dnmrzs r-1ny4l3l" id="id__70yn8ck23rt" data-testid="User-Names">
 															<div class="css-1dbjc4n r-1awozwy r-18u37iz r-1wbh5a2 r-dnmrzs">
 																<div class="css-1dbjc4n r-1wbh5a2 r-dnmrzs">
-																	<a href="/twittertrendtldr" role="link" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
+																	<a href="/twildr_" role="link" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
 																		<div class="css-1dbjc4n r-1awozwy r-18u37iz r-1wbh5a2 r-dnmrzs">
 																			<div dir="ltr" class="css-901oao r-1awozwy r-1nao33i r-6koalj r-37j5jr r-a023e6 r-b88u0q r-rjixqe r-bcqeeo r-1udh08x r-3s2u2q r-qvutc0"><span class="css-901oao css-16my406 css-1hf3ou5 r-poiln3 r-bcqeeo r-qvutc0">
-																				<span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">Twitter Trend TLDR</span>
+																				<span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">TwiLDR</span>
 																				</span>
 																			</div>
 																			<div dir="ltr" class="css-901oao r-1nao33i r-xoduu5 r-18u37iz r-1q142lx r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0">
@@ -132,9 +132,9 @@ function displayTLDR(summary, source, source_link, google_link) {
 															<div class="css-1dbjc4n r-18u37iz r-1wbh5a2 r-13hce6t">
 																<div class="css-1dbjc4n r-1d09ksm r-18u37iz r-1wbh5a2">
 																	<div class="css-1dbjc4n r-1wbh5a2 r-dnmrzs">
-																		<a href="/twittertrendtldr" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
+																		<a href="/twildr_" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
 																			<div dir="ltr" class="css-901oao css-1hf3ou5 r-1bwzh9t r-18u37iz r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
-																				@twittertrendtldr
+																				@twildr_
 																		</span></div>
 																		</a>
 																	</div>
@@ -167,7 +167,7 @@ function displayTLDR(summary, source, source_link, google_link) {
 function displayMessage (message) {
 	// create a div and add it to the page
 	var div = document.createElement("div");
-	div.id = "twitter trend tldr"
+	div.id = "twildr"
 	div.style = "position: relative; width: 100%; transition: opacity 0.3s ease-out 0s;"
 	div.innerHTML = 
 	`
@@ -195,7 +195,7 @@ function displayMessage (message) {
 															<div class="r-1adg3ll r-13qz1uu" style="padding-bottom: 100%;"></div>
 															<div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
 																<div class="css-1dbjc4n r-sdzlij r-ggadg3 r-1udh08x r-u8s1d r-8jfcpp" style="height: calc(100% - -4px); width: calc(100% - -4px);">
-																	<a href="/twittertrendtldr" aria-hidden="true" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1niwhzg r-1loqt21 r-1pi2tsx r-1ny4l3l r-o7ynqc r-6416eg r-13qz1uu">
+																	<a href="/twildr_" aria-hidden="true" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1niwhzg r-1loqt21 r-1pi2tsx r-1ny4l3l r-o7ynqc r-6416eg r-13qz1uu">
 																		<div class="css-1dbjc4n r-sdzlij r-1wyvozj r-1udh08x r-633pao r-u8s1d r-1v2oles r-desppf" style="height: calc(100% - 4px); width: calc(100% - 4px);">
 																			<div class="css-1dbjc4n r-1niwhzg r-1pi2tsx r-13qz1uu"></div>
 																		</div>
@@ -235,10 +235,10 @@ function displayMessage (message) {
 														<div class="css-1dbjc4n r-1awozwy r-18u37iz r-1wbh5a2 r-dnmrzs r-1ny4l3l" id="id__70yn8ck23rt" data-testid="User-Names">
 															<div class="css-1dbjc4n r-1awozwy r-18u37iz r-1wbh5a2 r-dnmrzs">
 																<div class="css-1dbjc4n r-1wbh5a2 r-dnmrzs">
-																	<a href="/twittertrendtldr" role="link" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
+																	<a href="/twildr_" role="link" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
 																		<div class="css-1dbjc4n r-1awozwy r-18u37iz r-1wbh5a2 r-dnmrzs">
 																			<div dir="ltr" class="css-901oao r-1awozwy r-1nao33i r-6koalj r-37j5jr r-a023e6 r-b88u0q r-rjixqe r-bcqeeo r-1udh08x r-3s2u2q r-qvutc0"><span class="css-901oao css-16my406 css-1hf3ou5 r-poiln3 r-bcqeeo r-qvutc0">
-																				<span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">Twitter Trend TLDR</span>
+																				<span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">TwiLDR</span>
 																				</span>
 																			</div>
 																			<div dir="ltr" class="css-901oao r-1nao33i r-xoduu5 r-18u37iz r-1q142lx r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0">
@@ -255,9 +255,9 @@ function displayMessage (message) {
 															<div class="css-1dbjc4n r-18u37iz r-1wbh5a2 r-13hce6t">
 																<div class="css-1dbjc4n r-1d09ksm r-18u37iz r-1wbh5a2">
 																	<div class="css-1dbjc4n r-1wbh5a2 r-dnmrzs">
-																		<a href="/twittertrendtldr" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
+																		<a href="/twildr_" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
 																			<div dir="ltr" class="css-901oao css-1hf3ou5 r-1bwzh9t r-18u37iz r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
-																				@twittertrendtldr
+																				@twildr_
 																		</span></div>
 																		</a>
 																	</div>
@@ -289,7 +289,7 @@ function displayMessage (message) {
 
 
 function remove() {
-  var div = document.getElementById("twitter trend tldr");
+  var div = document.getElementById("twildr");
   if (div != null){
     div.remove();
   }
