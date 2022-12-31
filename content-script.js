@@ -8,23 +8,32 @@ document.addEventListener("click", function(event) {
 		trendName = trendName.replace("#", "")
 		console.log(trendName)
 
+		// add the loading... message when page loads
+		let loading = setInterval(() => {
+			if (document.querySelector('[data-testid="cellInnerDiv"]') != null) {
+				displayMessage("Loading...");
+				clearInterval(loading);
+			}
+		}, 500)
+
 		fetch(`https://twitter-flask-372723.ue.r.appspot.com/articles?tag=${trendName}`)
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data);
 
 			// make sure the page is loaded before adding the div
-			setInterval(() => {
+			let display = setInterval(() => {
 				if (document.querySelector('[data-testid="cellInnerDiv"]') != null) {
-					clearInterval();
+					remove()
+					if (data[0].summary != "") {
+						displayTLDR(data[0].summary, data[0].source, data[0].source_link, data[1].google_news_link);
+					} else {
+						displayMessage("Sorry, we could not generate a summary for "+trendName);
+					}
+					clearInterval(display);
 				}
-			}, 1000)
+			}, 500)
 			
-			if (data[0].summary != "") {
-				displayTLDR(data[0].summary, data[0].source, data[0].source_link, data[1].google_news_link);
-			} else {
-				displayError(trendName, data[1].google_news_link);
-			}
 		}).catch((err) => {
 			console.log(err)
 		});
@@ -155,7 +164,7 @@ function displayTLDR(summary, source, source_link, google_link) {
 	document.querySelector('[data-testid="cellInnerDiv"]').parentElement.prepend(div)
 }
 
-function displayError (trendName, google_link) {
+function displayMessage (message) {
 	// create a div and add it to the page
 	var div = document.createElement("div");
 	div.id = "twitter trend tldr"
@@ -262,7 +271,7 @@ function displayError (trendName, google_link) {
 									</div>
 									<div class="css-1dbjc4n">
 										<div class="css-1dbjc4n">
-											<div dir="auto" lang="en" class="css-901oao r-1nao33i r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-bnwqim r-qvutc0" id="id__joz34qhhb7" data-testid="tweetText">Sorry, we could not generate a summary for ${trendName}.<br>You may try visiting <a href=${google_link} class="css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0" target="_blank" rel="noreferrer">this link</a></div>
+											<div dir="auto" lang="en" class="css-901oao r-1nao33i r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-bnwqim r-qvutc0" id="id__joz34qhhb7" data-testid="tweetText">${message}<br> </div>
 										</div>
 									</div>
 								</div>
@@ -279,7 +288,7 @@ function displayError (trendName, google_link) {
 }
 
 
-function removeTLDR() {
+function remove() {
   var div = document.getElementById("twitter trend tldr");
   if (div != null){
     div.remove();

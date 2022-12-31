@@ -1,16 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "Trend TLDR",
+  "name": "TwiLDR",
   "version": "1.0.0",
+  "description": "TwiLDR is a browser extension that helps you understand the trends on Twitter.",
+  "icons": {
+    "48": "imgs/icon48.png",
+    "128": "imgs/icon128.png"
+  },
   "content_scripts": [
     {
       "matches": ["https://twitter.com/*"],
       "js": ["content-script.js"],
       "run_at": "document_start"
     }
-  ],
-  "permissions": [
-    "webNavigation"
-  ],
-  "host_permissions": ["https://*/"]
+  ]
 }
