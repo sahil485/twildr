@@ -85,8 +85,8 @@ function displayTLDR(summary, source, source_link, google_link) {
 																				<div class="r-1adg3ll r-13qz1uu" style="padding-bottom: 100%;"></div>
 																				<div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
 																					<div aria-label="" class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010">
-																						<div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw" style="background-image: url(&quot;https://pbs.twimg.com/profile_images/1488548719062654976/u6qfBBkF_400x400.jpg&quot;);"></div>
-																						<img alt="" draggable="true" src="https://pbs.twimg.com/profile_images/1488548719062654976/u6qfBBkF_400x400.jpg" class="css-9pa8cd">
+																						<div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw" style="background-image: url(&quot;https://pbs.twimg.com/profile_images/1609909287551406080/dzC1yqOW_400x400.jpg&quot;);"></div>
+																						<img alt="" draggable="true" src="https://pbs.twimg.com/profile_images/1609909287551406080/dzC1yqOW_400x400.jpg" class="css-9pa8cd">
 																					</div>
 																				</div>
 																			</div>
@@ -208,8 +208,8 @@ function displayMessage (message) {
 																				<div class="r-1adg3ll r-13qz1uu" style="padding-bottom: 100%;"></div>
 																				<div class="r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-ipm5af r-13qz1uu">
 																					<div aria-label="" class="css-1dbjc4n r-1p0dtai r-1mlwlqe r-1d2f490 r-1udh08x r-u8s1d r-zchlnj r-ipm5af r-417010">
-																						<div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw" style="background-image: url(&quot;https://pbs.twimg.com/profile_images/1488548719062654976/u6qfBBkF_400x400.jpg&quot;);"></div>
-																						<img alt="" draggable="true" src="https://pbs.twimg.com/profile_images/1488548719062654976/u6qfBBkF_400x400.jpg" class="css-9pa8cd">
+																						<div class="css-1dbjc4n r-1niwhzg r-vvn4in r-u6sd8q r-4gszlv r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw" style="background-image: url(&quot;https://pbs.twimg.com/profile_images/1609909287551406080/dzC1yqOW_400x400.jpg&quot;);"></div>
+																						<img alt="" draggable="true" src="https://pbs.twimg.com/profile_images/1609909287551406080/dzC1yqOW_400x400.jpg" class="css-9pa8cd">
 																					</div>
 																				</div>
 																			</div>
