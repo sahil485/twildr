@@ -115,7 +115,7 @@ function displayTLDR(summary, source, source_link, google_link) {
 																<div class="css-1dbjc4n r-1wbh5a2 r-dnmrzs">
 																	<a href="/twildr_" role="link" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
 																		<div class="css-1dbjc4n r-1awozwy r-18u37iz r-1wbh5a2 r-dnmrzs">
-																			<div dir="ltr" class="css-901oao r-1awozwy r-1nao33i r-6koalj r-37j5jr r-a023e6 r-b88u0q r-rjixqe r-bcqeeo r-1udh08x r-3s2u2q r-qvutc0"><span class="css-901oao css-16my406 css-1hf3ou5 r-poiln3 r-bcqeeo r-qvutc0">
+																			<div dir="ltr" class="css-901oao r-vlxjld r-1awozwy r-1nao33i r-6koalj r-37j5jr r-a023e6 r-b88u0q r-rjixqe r-bcqeeo r-1udh08x r-3s2u2q r-qvutc0"><span class="css-901oao css-16my406 css-1hf3ou5 r-poiln3 r-bcqeeo r-qvutc0">
 																				<span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">TwiLDR</span>
 																				</span>
 																			</div>
@@ -134,7 +134,7 @@ function displayTLDR(summary, source, source_link, google_link) {
 																<div class="css-1dbjc4n r-1d09ksm r-18u37iz r-1wbh5a2">
 																	<div class="css-1dbjc4n r-1wbh5a2 r-dnmrzs">
 																		<a href="/twildr_" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
-																			<div dir="ltr" class="css-901oao css-1hf3ou5 r-1bwzh9t r-18u37iz r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
+																			<div dir="ltr" class="css-901oao r-vlxjld css-1hf3ou5 r-1bwzh9t r-18u37iz r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
 																				@twildr_
 																		</span></div>
 																		</a>
@@ -149,7 +149,7 @@ function displayTLDR(summary, source, source_link, google_link) {
 									</div>
 									<div class="css-1dbjc4n">
 										<div class="css-1dbjc4n">
-											<div dir="auto" lang="en" class="css-901oao r-1nao33i r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-bnwqim r-qvutc0" id="id__joz34qhhb7" data-testid="tweetText">${summary} - <a href=${source_link} class="css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0" target="_blank" rel="noreferrer">Source: ${source}</a><br><a href=${google_link} class="css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0" target="_blank" rel="noreferrer">More articles</a></div>
+											<div dir="auto" lang="en" class="css-901oao r-vlxjld r-1nao33i r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-bnwqim r-qvutc0" id="id__joz34qhhb7" data-testid="tweetText">${summary} - <a href=${source_link} class="css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0" target="_blank" rel="noreferrer">Source: ${source}</a><br><a href=${google_link} class="css-4rbku5 css-18t94o4 css-901oao css-16my406 r-1cvl2hr r-1loqt21 r-poiln3 r-bcqeeo r-qvutc0" target="_blank" rel="noreferrer">More articles</a></div>
 										</div>
 									</div>
 								</div>
@@ -238,7 +238,7 @@ function displayMessage (message) {
 																<div class="css-1dbjc4n r-1wbh5a2 r-dnmrzs">
 																	<a href="/twildr_" role="link" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
 																		<div class="css-1dbjc4n r-1awozwy r-18u37iz r-1wbh5a2 r-dnmrzs">
-																			<div dir="ltr" class="css-901oao r-1awozwy r-1nao33i r-6koalj r-37j5jr r-a023e6 r-b88u0q r-rjixqe r-bcqeeo r-1udh08x r-3s2u2q r-qvutc0"><span class="css-901oao css-16my406 css-1hf3ou5 r-poiln3 r-bcqeeo r-qvutc0">
+																			<div dir="ltr" class="css-901oao r-vlxjld r-1awozwy r-1nao33i r-6koalj r-37j5jr r-a023e6 r-b88u0q r-rjixqe r-bcqeeo r-1udh08x r-3s2u2q r-qvutc0"><span class="css-901oao css-16my406 css-1hf3ou5 r-poiln3 r-bcqeeo r-qvutc0">
 																				<span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">TwiLDR</span>
 																				</span>
 																			</div>
@@ -257,7 +257,7 @@ function displayMessage (message) {
 																<div class="css-1dbjc4n r-1d09ksm r-18u37iz r-1wbh5a2">
 																	<div class="css-1dbjc4n r-1wbh5a2 r-dnmrzs">
 																		<a href="/twildr_" role="link" tabindex="-1" class="css-4rbku5 css-18t94o4 css-1dbjc4n r-1loqt21 r-1wbh5a2 r-dnmrzs r-1ny4l3l">
-																			<div dir="ltr" class="css-901oao css-1hf3ou5 r-1bwzh9t r-18u37iz r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
+																			<div dir="ltr" class="css-901oao r-vlxjld css-1hf3ou5 r-1bwzh9t r-18u37iz r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-qvutc0"><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">
 																				@twildr_
 																		</span></div>
 																		</a>
@@ -272,7 +272,7 @@ function displayMessage (message) {
 									</div>
 									<div class="css-1dbjc4n">
 										<div class="css-1dbjc4n">
-											<div dir="auto" lang="en" class="css-901oao r-1nao33i r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-bnwqim r-qvutc0" id="id__joz34qhhb7" data-testid="tweetText">${message}<br> </div>
+											<div dir="auto" lang="en" class="css-901oao r-vlxjld r-1nao33i r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-bnwqim r-qvutc0" id="id__joz34qhhb7" data-testid="tweetText">${message}<br> </div>
 										</div>
 									</div>
 								</div>
