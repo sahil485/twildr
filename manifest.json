@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "TwiLDR",
   "version": "1.0.1",
-  "description": "Understand why something is trending on Twitter with an explanation on its trend feed",
+  "description": "Understand why a topic is trending on Twitter with a short summary at the top of its feed.",
   "icons": {
     "48": "imgs/icon48.png",
     "128": "imgs/icon128.png"
